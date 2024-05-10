@@ -1,13 +1,122 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Dashboard</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
   <app-root></app-root>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="assets/js/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/include.js"></script>
+  <script src="assets/js/custom.js"></script>
+  <script src="assets/js/progressBar.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      new ApexCharts(document.querySelector("#performanceChart"), {
+        series: [
+          {
+            name: "Today",
+            data: [31, 40, 28, 51, 42, 82, 56],
+          },
+          // {
+          //   name: "Month",
+          //   data: [11, 32, 45, 32, 34, 52, 41],
+          // },
+          // {
+          //   name: "Year",
+          //   data: [15, 11, 32, 18, 9, 24, 11],
+          // },
+        ],
+        chart: {
+          height: 350,
+          type: "bar",
+          toolbar: {
+            show: false,
+          },
+        },
+        markers: {
+          size: 4,
+        },
+        colors: ["#376681"],
+        fill: {
+          type: "gradient",
+          gradient: {
+            shadeIntensity: 1,
+            opacityFrom: 0.3,
+            opacityTo: 0.4,
+            stops: [0, 90, 100],
+          },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        stroke: {
+          curve: "smooth",
+          width: 2,
+        },
+        xaxis: {
+          type: "datetime",
+          categories: [
+            "2018-09-19T00:00:00.000Z",
+            "2018-09-19T01:30:00.000Z",
+            "2018-09-19T02:30:00.000Z",
+            "2018-09-19T03:30:00.000Z",
+            "2018-09-19T04:30:00.000Z",
+            "2018-09-19T05:30:00.000Z",
+            "2018-09-19T06:30:00.000Z",
+          ],
+        },
+        tooltip: {
+          x: {
+            format: "dd/MM/yy HH:mm",
+          },
+        },
+      }).render();
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      new ApexCharts(document.querySelector("#serverStoragChart"), {
+        series: [44, 55, 13, 43, 22, 11],
+        chart: {
+          type: "donut",
+        },
+        labels: [
+          "800 GB",
+          "1000 GB",
+          "400 GB",
+          "1200 GB",
+          "900 GB",
+          "700 GB",
+        ],
+        responsive: [
+          {
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200,
+              },
+              legend: {
+                position: "bottom",
+              },
+            },
+          },
+        ],
+      }).render();
+    });
+  </script>
 </body>
 </html>
